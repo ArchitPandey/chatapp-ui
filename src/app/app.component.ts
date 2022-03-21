@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Message } from './model/message';
+import { ChatService } from './service/chat.service';
 
 @Component({
   selector: 'app-root',

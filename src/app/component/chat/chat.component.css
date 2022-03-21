@@ -1,0 +1,63 @@
+.message-box {
+    height: calc(100vh - 200px);
+    overflow: auto;
+    background-color: #F8F8F8;
+}
+
+.message-text-current-user {
+    background-color: lightgreen;
+    padding: 1%;
+    margin-top: 1%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.message-text-friend {
+    background-color: white;
+    padding: 1%;
+    margin-top: 1%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.message-text-container-current-user {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.message-text-container-friend {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.friend-header {
+    
+    background-color: cadetblue;
+    font-weight: bold;
+    padding: 3%;
+}
+
+.friend-body {
+    padding: 3%;
+    display: flex;
+}
+
+.chat-header {
+    border: 1px solid ghostwhite;
+    background-color: cadetblue;
+    padding: 1.5%;
+    font-weight: bold;
+    margin-bottom: 1%;
+}
+
+.chat-footer {
+    display: flex;
+}
+
+.message-count {
+    border-radius: 50%;
+    background-color: green;
+    height: 100%;
+    width: 8%;
+    text-align: center;
+}

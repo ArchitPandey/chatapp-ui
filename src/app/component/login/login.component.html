@@ -1,0 +1,24 @@
+<ng-template #loginModal let-modal>
+    <div class = "modal-header">
+        <h4 class = "modal-title">Enter Username</h4>
+    </div>
+    <div class = "modal-body">
+        <form>
+            <div class = "mb-3">
+                <label for="username" >Username</label>
+                <div class = "input-group">
+                    <input id = "username" 
+                    name = "username" 
+                    class = "form-control" 
+                    [(ngModel)] = "this.username" 
+                    placeholder = "Username..." 
+                    type = "text"
+                    (keyup.enter) ="login()">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class = "modal-footer">
+        <button type = "button" class = "btn btn-outline-dark" (click) = "login()">Enter</button>
+    </div>
+</ng-template>
