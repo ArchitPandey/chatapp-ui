@@ -13,3 +13,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## To Do:
+unread messages should disappear from friend 'f' when user click on friend 'f', reads messages and go to some other friend 'g'
