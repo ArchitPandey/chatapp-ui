@@ -15,4 +15,4 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ## To Do:
-unread messages should disappear from friend 'f' when user click on friend 'f', reads messages and go to some other friend 'g'
+on clicking friend the heading on right chat box should show friend's name not user's name

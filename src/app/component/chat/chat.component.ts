@@ -16,12 +16,15 @@ export class ChatComponent implements OnInit {
   messageText: string = '';
   friends : string[] = [];
   messageStore: Map<string, Message[]> = new Map<string, Message[]>();
+  lastSeenStore: Map<string, Date> = new Map<string, Date>();
+  lastFriend: string;
 
   constructor(private _chatService: ChatService,
     private _userDetailService: UserDetailService) {
       this.currentUser = this._userDetailService._currentUser;
       this.currentFriend = this._userDetailService._friends[0];
       this.friends = this._userDetailService._friends;
+      this.lastFriend = this.currentFriend;
     }
 
   ngOnInit(): void {
@@ -42,7 +45,7 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage(): void {
-    const msgToSend = {from: this.currentUser, to: this.currentFriend, message: this.messageText};
+    const msgToSend = {from: this.currentUser, to: this.currentFriend, message: this.messageText, timestamp: new Date().toJSON()};
     this._chatService.sendMessage(msgToSend);
     if(!this.messageStore.has(msgToSend.to)) {
       this.messageStore.set(msgToSend.to, []);
@@ -62,7 +65,10 @@ export class ChatComponent implements OnInit {
   }
 
   onClickFriend(friend: string) {
+    this.lastFriend = this.currentFriend;
     this.currentFriend = friend;
+
+    this.lastSeenStore.set(this.lastFriend, new Date());
   }
 
   onFriendChangeClass(friend: string) : string {
@@ -72,9 +78,23 @@ export class ChatComponent implements OnInit {
   }
 
   countUnreadMessages(friend: string): number {
+    if( friend === this.currentFriend)
+      return 0;
+
     if (this.messageStore.has(friend)) {
-      const len = this.messageStore.get(friend)?.length;
-      return len ?? 0;
+      const messagesWithFriend = this.messageStore.get(friend);
+      const lastSeenTimeWithFriend = this.lastSeenStore.get(friend);
+
+      if (messagesWithFriend === null || (messagesWithFriend === undefined) 
+         || (lastSeenTimeWithFriend === null ) || (lastSeenTimeWithFriend === undefined)) {
+        return 0;
+      }
+      
+      return messagesWithFriend.filter( (m) => { 
+        const msgTs = new Date(m.timestamp);
+        return msgTs > lastSeenTimeWithFriend;
+      } ).length;
+
     }
     return 0;
   }

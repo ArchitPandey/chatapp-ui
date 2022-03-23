@@ -7,7 +7,7 @@
             [ngClass] = "onFriendChangeClass(friend)"
             (click) = "onClickFriend(friend)">
             <div style = "flex-grow: 1;">{{friend}}</div>
-            <div class = "message-count" *ngIf = " (countUnreadMessages(friend) > 0) && (this.currentFriend !== friend)">{{countUnreadMessages(friend)}}</div>
+            <div class = "message-count" *ngIf = " (countUnreadMessages(friend) > 0)">{{countUnreadMessages(friend)}}</div>
           </button>
         </div>
       </div>
